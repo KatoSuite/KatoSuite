@@ -1,0 +1,18 @@
+{
+  "tiers": {
+    "free":        { "displayName":"Free",        "price":0,     "limits":{"ai":3,  "children":0},  "features":[] },
+    "printables":  { "displayName":"Printables",  "price":7.99,  "limits":{"ai":0,  "children":0},  "features":["pdf","save_printables"] },
+    "library":     { "displayName":"Library",     "price":7.99,  "limits":{"ai":0,  "children":0},  "features":["library","pdf"] },
+    "basic":       { "displayName":"Starter",     "price":14.99, "limits":{"ai":25, "children":1},  "features":["ai","pdf","save","shop_credits_3"] },
+    "educator":    { "displayName":"Educator",    "price":29.99, "limits":{"ai":-1, "children":3},  "features":["ai","pdf","save","children","observations","reports"] },
+    "pro_plus":    { "displayName":"Pro+",        "price":89.99, "limits":{"ai":-1, "children":-1}, "features":["all","classes_included","shop_all_inclusive","teams"] }
+  },
+  "addons": {
+    "library":     { "price":9.99,  "feature":"library" },
+    "child_x3":    { "price":6.99,  "feature":"children_x3" },
+    "reports":     { "price":4.99,  "feature":"reports" },
+    "yearbook":    { "price":9.99,  "feature":"yearbook" },
+    "seat":        { "price":7.99,  "feature":"extra_seat" },
+    "ai_topup_15": { "price":9.99,  "feature":"ai_topup_15" }
+  }
+}

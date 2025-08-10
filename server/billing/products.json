@@ -1,0 +1,16 @@
+{
+  "priceIds": {
+    "printables": "price_live_printables",
+    "library":    "price_live_library",
+    "basic":      "price_live_starter",
+    "educator":   "price_live_educator",
+    "pro_plus":   "price_live_proplus"
+  },
+  "addonIds": {
+    "ai_topup_15":"price_live_ai_topup_15",
+    "child_x3":   "price_live_child_x3",
+    "reports":    "price_live_reports",
+    "yearbook":   "price_live_yearbook",
+    "seat":       "price_live_seat"
+  }
+}
