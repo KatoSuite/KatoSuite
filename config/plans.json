@@ -1,0 +1,22 @@
+{
+  "tiers": {
+    "free":        { "displayName": "Free",        "price": 0,     "limits": { "ai": 3,  "children": 0 },   "features": [] },
+    "printables":  { "displayName": "Printables",  "price": 7.99,  "limits": { "ai": 0,  "children": 0 },   "features": ["pdf","save_printables"] },
+    "library":     { "displayName": "Library",     "price": 7.99,  "limits": { "ai": 0,  "children": 0 },   "features": ["library","pdf"] },
+    "basic":       { "displayName": "Basic",       "price": 14.99, "limits": { "ai": 25, "children": 1 },   "features": ["ai","pdf","save","shop_credits_3","children"] },
+    "student":     { "displayName": "Student",     "price": 17.99, "limits": { "ai": -1, "children": 2 },   "features": ["ai","pdf","save","children","discount_shop"] },
+    "home":        { "displayName": "Home",        "price": 21.99, "limits": { "ai": -1, "children": 3 },   "features": ["ai","pdf","save","children","discount_shop","family_dash"] },
+    "educator":    { "displayName": "Educator",    "price": 29.99, "limits": { "ai": -1, "children": 3 },   "features": ["ai","pdf","save","children","observations","reports"] },
+    "katocares":   { "displayName": "KatoCares",   "price": 12.99, "limits": { "ai": 25, "children": 1 },   "features": ["ai","pdf","save","children","discount_shop","equity"], "notes": "can be free" },
+    "center_pro":  { "displayName": "Center Pro",  "price": 39.99, "limits": { "ai": -1, "children": 10 },  "features": ["ai","pdf","save","children","teams","reports_bulk","analytics"] },
+    "center_max":  { "displayName": "Center Max",  "price": 69.99, "limits": { "ai": -1, "children": -1 },  "features": ["all","teams_unlimited","analytics","api","branding"] }
+  },
+  "addons": {
+    "library":     { "price": 9.99,  "feature": "library" },
+    "child_x3":    { "price": 6.99,  "feature": "children_x3" },
+    "reports":     { "price": 4.99,  "feature": "reports" },
+    "yearbook":    { "price": 9.99,  "feature": "yearbook" },
+    "seat":        { "price": 7.99,  "feature": "extra_seat" },
+    "ai_topup_15": { "price": 9.99,  "feature": "ai_topup_15" }
+  }
+}
