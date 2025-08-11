@@ -2,12 +2,16 @@
   "priceIds": {
     "printables": "price_live_printables",
     "library":    "price_live_library",
-    "basic":      "price_live_starter",
+    "basic":      "price_live_basic",
+    "student":    "price_live_student",
+    "home":       "price_live_home",
     "educator":   "price_live_educator",
-    "pro_plus":   "price_live_proplus"
+    "katocares":  "price_live_katocares",
+    "center_pro": "price_live_center_pro",
+    "center_max": "price_live_center_max"
   },
   "addonIds": {
-    "ai_topup_15":"price_live_ai_topup_15",
+    "ai_topup_15": "price_live_ai_topup_15",
     "child_x3":   "price_live_child_x3",
     "reports":    "price_live_reports",
     "yearbook":   "price_live_yearbook",

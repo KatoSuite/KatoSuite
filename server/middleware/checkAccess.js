@@ -2,7 +2,6 @@ import { TIERS } from "../config/tiers";
 
 export function canAccess(user, feature) {
   if (!user) return false;
-  if (["pro_plus"].includes(user.plan)) return true;
 
   const tier = TIERS[user.plan] || { features: [], limits:{} };
   const hasTier = tier.features?.includes("all") || tier.features?.includes(feature);

@@ -21,9 +21,9 @@ export default function SEOHead({ title, description, keywords, structuredData }
       { "@type": "Offer", "priceCurrency": "CAD", "price": "0", "name": "Free" },
       { "@type": "Offer", "priceCurrency": "CAD", "price": "7.99", "name": "Printables" },
       { "@type": "Offer", "priceCurrency": "CAD", "price": "7.99", "name": "Library" },
-      { "@type": "Offer", "priceCurrency": "CAD", "price": "14.99", "name": "Starter" },
+      { "@type": "Offer", "priceCurrency": "CAD", "price": "14.99", "name": "Basic" },
       { "@type": "Offer", "priceCurrency": "CAD", "price": "29.99", "name": "Educator" },
-      { "@type": "Offer", "priceCurrency": "CAD", "price": "89.99", "name": "Pro+" }
+      { "@type": "Offer", "priceCurrency": "CAD", "price": "69.99", "name": "Center Max" }
     ],
     "description": "AI lesson planning and early learning toolkit."
   };
