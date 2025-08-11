@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Script from "next/script";
 import SEOHead from "../components/SEOHead";
 import { altFrom } from "../lib/altText";
 
@@ -12,6 +13,32 @@ export default function PricingPage() {
         canonical="https://katosuite.com/pricing"
         url="https://katosuite.com/pricing"
       />
+      <Script id="offer-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "OfferCatalog",
+          name: "KatoSuite Pricing",
+          itemListElement: Object.entries({
+            Printables: 7.99,
+            Library: 7.99,
+            Starter: 14.99,
+            Student: 17.99,
+            "Home Educator": 21.99,
+            Educator: 29.99,
+            "Center Max": 69.99,
+          }).map(([name, price]) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name,
+              provider: { "@type": "Organization", name: "KatoSuite" },
+            },
+            price,
+            priceCurrency: "CAD",
+            availability: "https://schema.org/InStock",
+          })),
+        })}
+      </Script>
       <main>
         <Image
           src="/hero/pricing.png"
