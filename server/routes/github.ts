@@ -10,9 +10,16 @@ export const router = express.Router();
 
 router.get("/api/github/oauth/start", rateLimit, (req, res) => {
   const state = Buffer.from(JSON.stringify({ r: req.query.r || "/" })).toString("base64url");
+ 0gwhhv-codex/set-up-katosuite-github-app
+  const redirectUri = `${process.env.BASE_URL}/api/github/oauth/callback`;
+  const url =
+    `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_APP_CLIENT_ID}` +
+    `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+
   const url =
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_OAUTH_CLIENT_ID}` +
     `&redirect_uri=${encodeURIComponent(process.env.GITHUB_OAUTH_CALLBACK_URL || "")}` +
+ main
     `&scope=read:user,repo&state=${state}`;
   return res.redirect(url);
 });
@@ -22,14 +29,25 @@ router.get("/api/github/oauth/callback", rateLimit, bodyParser.urlencoded({ exte
     const code = req.query.code as string;
     if (!code) return res.status(400).send("Missing code");
 
+ 0gwhhv-codex/set-up-katosuite-github-app
+    const redirectUri = `${process.env.BASE_URL}/api/github/oauth/callback`;
+
+ main
     const r = await fetch("https://github.com/login/oauth/access_token", {
       method: "POST",
       headers: { Accept: "application/json" },
       body: new URLSearchParams({
+0gwhhv-codex/set-up-katosuite-github-app
+        client_id: process.env.GITHUB_APP_CLIENT_ID || "",
+        client_secret: process.env.GITHUB_APP_CLIENT_SECRET || "",
+        code,
+        redirect_uri: redirectUri
+
         client_id: process.env.GITHUB_OAUTH_CLIENT_ID || "",
         client_secret: process.env.GITHUB_OAUTH_CLIENT_SECRET || "",
         code,
         redirect_uri: process.env.GITHUB_OAUTH_CALLBACK_URL || ""
+ main
       })
     }).then(r => r.json() as any);
 
