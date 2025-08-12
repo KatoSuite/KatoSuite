@@ -1,1 +1,12 @@
-{ "version": 2, "routes": [{ "src": "^/api/inngest$", "dest": "/api/inngest" }] }
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "^/api/inngest$",
+      "dest": "/api/inngest",
+      "headers": {
+        "x-vercel-protection-bypass": "${VERCEL_PROTECTION_BYPASS_FOR_INNGEST}"
+      }
+    }
+  ]
+}
