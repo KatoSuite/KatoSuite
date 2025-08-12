@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "echo \"No tests\""
+    "test": "echo \"No tests\"",
+    "tools": "node server/tools/index.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.2",
