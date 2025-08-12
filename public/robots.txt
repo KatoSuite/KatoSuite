@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
+codex/create-security-middleware-with-helmet-and-cors
 Disallow: /api/
 Disallow: /admin
 Disallow: /dashboard
+
+Disallow: /admin
+ main
 Sitemap: https://katosuite.com/sitemap.xml
