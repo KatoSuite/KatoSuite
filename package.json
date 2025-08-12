@@ -5,6 +5,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    codex/add-opengraph-and-twitter-fields
+ codex/add-opengraph-and-twitter-fields
+    "test": "vitest"
+    
+    "test": "bun test"
+ main
+
 vlm5j2-codex/replace-hard-coded-token-in-vercel.json
     "test": "echo \"No tests\"",
     "tools": "node server/tools/index.js"
@@ -13,6 +20,7 @@ vlm5j2-codex/replace-hard-coded-token-in-vercel.json
     "test": "echo \"No tests\""
 
     "test": "bun test"
+ main
  main
  main
   },
@@ -31,6 +39,16 @@ vlm5j2-codex/replace-hard-coded-token-in-vercel.json
     "lucide-react": "^0.344.0"
 
     "react-dom": "^18.2.0"
+ codex/add-opengraph-and-twitter-fields
+ codex/add-opengraph-and-twitter-fields
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.0.0"
+
+
+ main
  main
   }
 }
