@@ -1,4 +1,5 @@
 {
+ codex/add-opengraph-and-twitter-fields
   "currencyDefaults": { "cad": "CAD", "usd": "USD" },
   "plans": [
     {
@@ -91,4 +92,31 @@
     { "id": "addon-parent-messaging", "name": { "en": "Parent Messaging Portal", "fr": "Messagerie Parents" }, "price": { "cad": 8.99, "usd": 6.75 } },
     { "id": "addon-neuro-support", "name": { "en": "Neurodivergent Support Mode", "fr": "Mode de Support Neurodivergent" }, "price": { "cad": 9.99, "usd": 7.5 } }
   ]
+
+  "priceIds": {
+    "printables": "price_live_printables",
+    "library":    "price_live_library",
+    "basic":      "price_live_basic",
+    "student":    "price_live_student",
+    "home":       "price_live_home",
+    "educator":   "price_live_educator",
+    "katocares":  "price_live_katocares",
+    "center_pro": "price_live_center_pro",
+    "center_max": "price_live_center_max",
+    "free":       "price_live_free",
+    "printable_power_pack": "price_live_printable_power_pack",
+    "student_success":      "price_live_student_success",
+    "homeschool_hero":      "price_live_homeschool_hero"
+  },
+  "addonIds": {
+    "ai_topup_15":           "price_live_ai_topup_15",
+    "child_x3":              "price_live_child_x3",
+    "reports":               "price_live_reports",
+    "yearbook":              "price_live_yearbook",
+    "seat":                  "price_live_seat",
+    "extra_child_profiles":  "price_live_extra_child_profiles",
+    "ai_lesson_wizard":      "price_live_ai_lesson_wizard",
+    "parent_messaging_portal": "price_live_parent_messaging_portal"
+  }
+ main
 }

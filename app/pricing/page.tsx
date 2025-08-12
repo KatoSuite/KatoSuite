@@ -1,10 +1,15 @@
 'use client'
 
+ codex/add-opengraph-and-twitter-fields
 import { useMemo, useState } from 'react'
 import catalog from '../../server/billing/products.json'
 import type { BillingCatalog, Plan, Addon } from '../../types/billing'
 import { formatMoney, Curr } from '../../lib/currency'
 import type { Metadata } from 'next'
+
+import { useState } from 'react'
+import { addons } from './data'
+ main
 
 export const metadata: Metadata = {
   title: 'Pricing & Plans | KatoSuite',
@@ -31,6 +36,26 @@ export const metadata: Metadata = {
 }
 
 const data = catalog as BillingCatalog
+
+const jsonLdPricing = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'KatoSuite Plans',
+  itemListElement: plans.map((p) => ({
+    '@type': 'Offer',
+    name: p.name,
+    price: p.price,
+    priceCurrency: 'CAD',
+    description: p.desc,
+  })),
+  addOn: addons.map((a) => ({
+    '@type': 'Offer',
+    name: a.title,
+    price: a.price.cad,
+    priceCurrency: 'CAD',
+    description: a.description.en,
+  })),
+}
 
 export default function PricingPage() {
   const [curr, setCurr] = useState<Curr>('cad')
@@ -77,6 +102,7 @@ export default function PricingPage() {
     <>
       <script
         type="application/ld+json"
+ codex/add-opengraph-and-twitter-fields
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <section className="mx-auto max-w-6xl px-4 py-10">
@@ -100,6 +126,14 @@ export default function PricingPage() {
           </div>
         </header>
 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPricing) }}
+      />
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+        <h1 className="text-4xl font-bold text-center mb-2">Simple, transparent pricing</h1>
+        <p className="text-center text-gray-600 mb-10">Secure Stripe checkout • Cancel anytime</p>
+ main
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {plans.map((p: Plan) => (
             <article
@@ -120,6 +154,7 @@ export default function PricingPage() {
             </article>
           ))}
         </div>
+ codex/add-opengraph-and-twitter-fields
 
         <h3 className="mt-12 mb-4 text-2xl font-bold">Add-Ons</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -134,6 +169,9 @@ export default function PricingPage() {
             </article>
           ))}
         </div>
+
+      </div>
+ main
       </section>
     </>
   )

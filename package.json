@@ -5,7 +5,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+ codex/add-opengraph-and-twitter-fields
     "test": "vitest"
+    
+    "test": "bun test"
+ main
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.2",
@@ -18,10 +22,13 @@
     "pg": "^8.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+ codex/add-opengraph-and-twitter-fields
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.4.0",
     "vitest": "^1.0.0"
+
+ main
   }
 }
