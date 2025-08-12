@@ -2,6 +2,6 @@
   "name": "katosuite",
   "version": "0.1.0",
   "scripts": {
-    "test": "echo \"No tests\""
+    "test": "bun test"
   }
 }
