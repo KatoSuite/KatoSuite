@@ -1,67 +1,140 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import catalog from '../../server/billing/products.json'
+import type { BillingCatalog, Plan, Addon } from '../../types/billing'
+import { formatMoney, Curr } from '../../lib/currency'
+import type { Metadata } from 'next'
 
-const plans = [
-  { id: 'free', name: 'Free', price: 0, desc: '3 AI credits/month, previews' },
-  { id: 'printables', name: 'Printables', price: 7.99, desc: 'Unlimited worksheets & coloring pages' },
-  { id: 'library', name: 'Library', price: 7.99, desc: '100+ lessons, unlimited exports' },
-  { id: 'basic', name: 'Starter', price: 14.99, desc: '25 AI credits, 1 child profile' },
-  { id: 'student', name: 'Student', price: 17.99, desc: 'Unlimited AI, 2 profiles' },
-  { id: 'home', name: 'Home Educator', price: 21.99, desc: 'Unlimited AI, 3 profiles, family dashboard' },
-  { id: 'educator', name: 'Educator', price: 29.99, desc: 'Reports, observations, 3 profiles' },
-  { id: 'center-max', name: 'Center Max', price: 69.99, desc: 'Teams, analytics, API, unlimited children' },
-]
+export const metadata: Metadata = {
+  title: 'Pricing & Plans | KatoSuite',
+  description:
+    'Montessori homeschool & AI lesson plans with bilingual printables. Monthly plans in CAD and USD.',
+  openGraph: {
+    title: 'Montessori homeschool lesson plans | Plans de leçons Montessori à la maison',
+    description:
+      'AI-generated Montessori lesson plans and printables in English and French.',
+    images: [
+      {
+        url: 'https://katosuite.com/og/katosuite.png',
+        alt: 'KatoSuite Montessori homeschool lesson plans',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Montessori homeschool lesson plans | Plans de leçons Montessori à la maison',
+    description:
+      'AI Montessori homeschool lesson plans and printables in English and French.',
+    images: ['https://katosuite.com/og/katosuite.png'],
+  },
+}
+
+const data = catalog as BillingCatalog
 
 export default function PricingPage() {
-  const [loading, setLoading] = useState<string | null>(null)
+  const [curr, setCurr] = useState<Curr>('cad')
+  const [q, setQ] = useState('')
 
-  const checkout = async (plan: string) => {
-    try {
-      setLoading(plan)
-      const res = await fetch('/api/billing/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ provider: 'stripe', plan, addons: [] }),
-      })
-      const data = await res.json()
-      if (data?.url) window.location.href = data.url
-    } finally {
-      setLoading(null)
-    }
+  const plans = useMemo(() => {
+    const term = q.trim().toLowerCase()
+    if (!term) return data.plans
+    return data.plans.filter((p) =>
+      [p.id, p.name.en, p.name.fr, ...(p.features || [])]
+        .join(' ')
+        .toLowerCase()
+        .includes(term)
+    )
+  }, [q])
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'KatoSuite – Montessori Homeschool & AI Lesson Plans',
+    description:
+      'AI lesson plan generator, Montessori homeschool curriculum, printable worksheets. Plans in CAD and USD.',
+    brand: { '@type': 'Brand', name: 'KatoSuite' },
+    offers: [
+      {
+        '@type': 'AggregateOffer',
+        priceCurrency: curr.toUpperCase(),
+        lowPrice: '0',
+        highPrice: String(Math.max(...data.plans.map((p) => p.price[curr]))),
+        offerCount: String(data.plans.length),
+        url: 'https://katosuite.com/pricing',
+        availability: 'https://schema.org/InStock',
+      },
+    ],
+    keywords: [
+      'AI lesson plan generator',
+      'Montessori homeschool lesson plans',
+      'printable worksheets for teachers',
+      'bilingual preschool printables',
+    ],
   }
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-2">Simple, transparent pricing</h1>
-        <p className="text-center text-gray-600 mb-10">Secure Stripe checkout • Cancel anytime</p>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <h1 className="text-3xl font-bold">Pricing & Plans</h1>
+          <div className="flex gap-3">
+            <select
+              value={curr}
+              onChange={(e) => setCurr(e.target.value as Curr)}
+              className="border rounded-md px-3 py-2"
+            >
+              <option value="cad">CAD</option>
+              <option value="usd">USD</option>
+            </select>
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search plans / IDs / features"
+              className="border rounded-md px-3 py-2 w-64"
+            />
+          </div>
+        </header>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {plans.map((p) => (
-            <div key={p.id} className="border rounded-xl p-6 hover:shadow-md transition flex flex-col">
-              <div className="text-sm font-semibold text-blue-700">{p.name}</div>
-              <div className="mt-2 text-3xl font-extrabold">
-                {p.price === 0 ? 'Free' : `$${p.price.toFixed(2)} CAD`}
+          {plans.map((p: Plan) => (
+            <article
+              key={p.id}
+              className="rounded-2xl border p-5 shadow-sm hover:shadow-md transition"
+            >
+              <div className="text-xs text-slate-500 mb-1">ID: {p.id}</div>
+              <h2 className="text-xl font-semibold">{p.name.en}</h2>
+              <div className="mt-2 text-2xl font-bold">
+                {formatMoney(p.price[curr], curr)}{' '}
+                <span className="text-sm font-normal">/month</span>
               </div>
-              <p className="text-sm text-gray-600 mt-2">{p.desc}</p>
-              <ul className="mt-4 text-sm text-gray-700 space-y-1">
-                <li>• EN/FR support</li>
-                <li>• PDF exports (paid)</li>
-                <li>• Library previews (free)</li>
+              <ul className="mt-3 space-y-1 text-sm">
+                {p.features.map((f) => (
+                  <li key={f}>• {f}</li>
+                ))}
               </ul>
-              <button
-                onClick={() => checkout(p.id)}
-                disabled={!!loading}
-                className="mt-6 inline-flex items-center justify-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-60"
-              >
-                {loading === p.id ? 'Redirecting…' : 'Choose Plan'}
-              </button>
-            </div>
+            </article>
           ))}
         </div>
-      </div>
-    </section>
+
+        <h3 className="mt-12 mb-4 text-2xl font-bold">Add-Ons</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(data.addons as Addon[]).map((a) => (
+            <article key={a.id} className="rounded-2xl border p-5 shadow-sm">
+              <div className="text-xs text-slate-500 mb-1">ID: {a.id}</div>
+              <h4 className="text-lg font-semibold">{a.name.en}</h4>
+              <div className="mt-2 text-lg font-bold">
+                {formatMoney(a.price[curr], curr)}{' '}
+                <span className="text-sm font-normal">/month</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   )
 }
-

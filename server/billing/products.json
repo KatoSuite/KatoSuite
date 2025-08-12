@@ -1,20 +1,94 @@
 {
-  "priceIds": {
-    "printables": "price_live_printables",
-    "library":    "price_live_library",
-    "basic":      "price_live_basic",
-    "student":    "price_live_student",
-    "home":       "price_live_home",
-    "educator":   "price_live_educator",
-    "katocares":  "price_live_katocares",
-    "center_pro": "price_live_center_pro",
-    "center_max": "price_live_center_max"
-  },
-  "addonIds": {
-    "ai_topup_15": "price_live_ai_topup_15",
-    "child_x3":   "price_live_child_x3",
-    "reports":    "price_live_reports",
-    "yearbook":   "price_live_yearbook",
-    "seat":       "price_live_seat"
-  }
+  "currencyDefaults": { "cad": "CAD", "usd": "USD" },
+  "plans": [
+    {
+      "id": "free-starter",
+      "tier": "individual",
+      "name": { "en": "Free Starter – Try AI Lesson Plan Generator", "fr": "Départ Gratuit – Essayez le Générateur de Leçons IA" },
+      "price": { "cad": 0, "usd": 0 },
+      "features": ["1-ai-plan", "1-child", "sample-library"],
+      "limits": { "aiCredits": 1, "children": 1 }
+    },
+    {
+      "id": "printable-power",
+      "tier": "individual",
+      "name": { "en": "Printable Power Pack", "fr": "Pack Imprimables" },
+      "price": { "cad": 8.99, "usd": 6.75 },
+      "features": ["100+worksheets", "seasonal-bundles", "no-tracking"]
+    },
+    {
+      "id": "student-success",
+      "tier": "individual",
+      "name": { "en": "Student Success Plan", "fr": "Forfait Étudiant" },
+      "price": { "cad": 18.99, "usd": 14.25 },
+      "features": ["5-ai-lessons", "progress-tracking", "parent-access"],
+      "limits": { "aiCredits": 5, "children": 2 }
+    },
+    {
+      "id": "homeschool-hero",
+      "tier": "individual",
+      "name": { "en": "Homeschool Hero", "fr": "Héros École à la Maison" },
+      "price": { "cad": 23.99, "usd": 18.0 },
+      "features": ["unlimited-ai", "sel-story", "4-children"],
+      "limits": { "children": 4 }
+    },
+    {
+      "id": "educator-growth",
+      "tier": "individual",
+      "name": { "en": "Educator Growth Toolkit", "fr": "Boîte à Outils Enseignant" },
+      "price": { "cad": 32.99, "usd": 25.0 },
+      "features": ["6-children", "bilingual-sel", "stem-sensory"],
+      "limits": { "children": 6 }
+    },
+    {
+      "id": "premium-pro",
+      "tier": "individual",
+      "name": { "en": "Premium Pro Educator", "fr": "Éducateur Pro Premium" },
+      "price": { "cad": 54.99, "usd": 42.0 },
+      "features": ["10-children", "unlimited-ai", "analytics", "full-printable-library"],
+      "limits": { "children": 10 }
+    },
+    {
+      "id": "mini-center",
+      "tier": "center",
+      "name": { "en": "Mini Center Essentials", "fr": "Essentiels Mini Centre" },
+      "price": { "cad": 84.99, "usd": 65.0 },
+      "features": ["20-children", "5-teachers", "core-analytics"],
+      "limits": { "children": 20, "teachers": 5 }
+    },
+    {
+      "id": "pro-center",
+      "tier": "center",
+      "name": { "en": "Pro Center Growth Hub", "fr": "Centre Pro – Croissance" },
+      "price": { "cad": 149.99, "usd": 115.0 },
+      "features": ["50-children", "admin-dashboard", "advanced-analytics"],
+      "limits": { "children": 50, "teachers": 10 }
+    },
+    {
+      "id": "enterprise-academy",
+      "tier": "center",
+      "name": { "en": "Enterprise Academy", "fr": "Académie Entreprise" },
+      "price": { "cad": 169.99, "usd": 127.5 },
+      "features": ["white-label", "unlimited-profiles", "priority-onboarding"],
+      "limits": { "children": 150 }
+    }
+  ],
+  "addons": [
+    { "id": "addon-extra-children-3", "name": { "en": "Extra Child Profiles (x3)", "fr": "Profils Enfant Suppl. (x3)" }, "price": { "cad": 7.5, "usd": 5.75 } },
+    { "id": "addon-extra-teacher", "name": { "en": "Extra Teacher Account", "fr": "Compte Enseignant Suppl." }, "price": { "cad": 8.5, "usd": 6.5 } },
+    { "id": "addon-library-full", "name": { "en": "Full Printable Library (200+)", "fr": "Bibliothèque d’Imprimables (200+)" }, "price": { "cad": 21.99, "usd": 17.0 } },
+    { "id": "addon-year-end-reports", "name": { "en": "Year-End Reports", "fr": "Rapports de Fin d’Année" }, "price": { "cad": 5.5, "usd": 4.25 } },
+    { "id": "addon-yearbook", "name": { "en": "Yearbook Builder", "fr": "Créateur d’Album" }, "price": { "cad": 10.99, "usd": 8.5 } },
+    { "id": "addon-storage-100gb", "name": { "en": "Extra Storage (100GB)", "fr": "Stockage Suppl. (100GB)" }, "price": { "cad": 11.0, "usd": 8.5 } },
+    { "id": "addon-templates-premium", "name": { "en": "Premium Montessori Templates", "fr": "Modèles Montessori Premium" }, "price": { "cad": 17.0, "usd": 13.0 } },
+    { "id": "addon-analytics-advanced", "name": { "en": "Advanced Analytics", "fr": "Analytique Avancée" }, "price": { "cad": 27.0, "usd": 20.5 } },
+    { "id": "addon-bilingual-story", "name": { "en": "Bilingual Story Engine (EN/FR)", "fr": "Moteur d’Histoires (EN/FR)" }, "price": { "cad": 13.5, "usd": 10.25 } },
+    { "id": "addon-observation-pro", "name": { "en": "Observation Tracker Pro", "fr": "Suivi d’Observation Pro" }, "price": { "cad": 10.0, "usd": 7.75 } },
+    { "id": "addon-dev-tracker-plus", "name": { "en": "Development Tracker+", "fr": "Suivi de Développement+" }, "price": { "cad": 12.5, "usd": 9.5 } },
+    { "id": "addon-ai-lesson-wizard", "name": { "en": "AI Lesson Wizard", "fr": "Assistant Leçons IA" }, "price": { "cad": 16.99, "usd": 13.0 } },
+    { "id": "addon-student-portal", "name": { "en": "Student Portal", "fr": "Portail Élève" }, "price": { "cad": 6.0, "usd": 4.75 } },
+    { "id": "addon-ai-scan-mark", "name": { "en": "AI Scan & Mark Tool", "fr": "Correction Automatique IA" }, "price": { "cad": 12.99, "usd": 9.75 } },
+    { "id": "addon-parent-messaging", "name": { "en": "Parent Messaging Portal", "fr": "Messagerie Parents" }, "price": { "cad": 8.99, "usd": 6.75 } },
+    { "id": "addon-neuro-support", "name": { "en": "Neurodivergent Support Mode", "fr": "Mode de Support Neurodivergent" }, "price": { "cad": 9.99, "usd": 7.5 } }
+  ]
 }
