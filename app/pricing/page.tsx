@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { addons } from './data'
 
 const plans = [
   { id: 'free', name: 'Free', price: 0, desc: '3 AI credits/month, previews' },
@@ -12,6 +13,26 @@ const plans = [
   { id: 'educator', name: 'Educator', price: 29.99, desc: 'Reports, observations, 3 profiles' },
   { id: 'center-max', name: 'Center Max', price: 69.99, desc: 'Teams, analytics, API, unlimited children' },
 ]
+
+const jsonLdPricing = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'KatoSuite Plans',
+  itemListElement: plans.map((p) => ({
+    '@type': 'Offer',
+    name: p.name,
+    price: p.price,
+    priceCurrency: 'CAD',
+    description: p.desc,
+  })),
+  addOn: addons.map((a) => ({
+    '@type': 'Offer',
+    name: a.title,
+    price: a.price.cad,
+    priceCurrency: 'CAD',
+    description: a.description.en,
+  })),
+}
 
 export default function PricingPage() {
   const [loading, setLoading] = useState<string | null>(null)
@@ -32,8 +53,13 @@ export default function PricingPage() {
   }
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPricing) }}
+      />
+      <section className="py-16">
+        <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold text-center mb-2">Simple, transparent pricing</h1>
         <p className="text-center text-gray-600 mb-10">Secure Stripe checkout • Cancel anytime</p>
 
@@ -61,7 +87,8 @@ export default function PricingPage() {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   )
 }
 
