@@ -5,8 +5,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+vlm5j2-codex/replace-hard-coded-token-in-vercel.json
     "test": "echo \"No tests\"",
     "tools": "node server/tools/index.js"
+
+ codex/replace-hard-coded-token-in-vercel.json
+    "test": "echo \"No tests\""
+
+    "test": "bun test"
+ main
+ main
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.2",
@@ -18,7 +26,11 @@
     "node-fetch": "^3.3.2",
     "pg": "^8.11.1",
     "react": "^18.2.0",
+vlm5j2-codex/replace-hard-coded-token-in-vercel.json
     "react-dom": "^18.2.0",
     "lucide-react": "^0.344.0"
+
+    "react-dom": "^18.2.0"
+ main
   }
 }
