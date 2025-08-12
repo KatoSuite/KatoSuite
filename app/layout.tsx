@@ -4,11 +4,18 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+ codex/add-opengraph-and-twitter-fields
+import { DEFAULT_META } from '@/seo/seo-schema'
+
+ main
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
+  ...DEFAULT_META,
   metadataBase: new URL('https://katosuite.com'),
+ codex/add-opengraph-and-twitter-fields
+
   title: 'KatoSuite — AI Lesson Plans, Printables & Reports (EN/FR)',
   description:
     'AI-powered lesson planning, printables, observations, and reports for early childhood educators (EN/FR, Canada).',
@@ -36,6 +43,7 @@ export const metadata = {
     description: 'AI-powered Montessori homeschool lesson plans and printables in English and French.',
     images: ['https://katosuite.com/og/katosuite.png'],
   },
+ main
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 }
 
