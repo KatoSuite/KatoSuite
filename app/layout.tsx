@@ -3,7 +3,10 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Analytics } from '@vercel/analytics/next'
+ 0gwhhv-codex/set-up-katosuite-github-app
 import { SpeedInsights } from '@vercel/speed-insights/next'
+
+main
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,7 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="min-h-[60vh]">{children}</main>
         <Footer />
         <Analytics />
+0gwhhv-codex/set-up-katosuite-github-app
         <SpeedInsights />
+
+ main
       </body>
     </html>
   )
